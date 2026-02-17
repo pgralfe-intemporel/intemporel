@@ -9,21 +9,35 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Editorial serif + refined sans -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Maison / editorial: Bodoni for the claim + Cormorant + Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,300;6..96,400;6..96,500&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root{
+      /* Brand ink (your navy) */
       --navy: #2F3E5C;
-      --navy-deep: #283652;
-      --paper: #F6F2EA;
-      --paper-2: #FBF8F2;
-      --gold: #C6A86B;
 
+      /* Nocturnal gold background palette */
+      --gold-1: #b88945;
+      --gold-2: #8a6230;
+      --gold-3: #5f3f1f;
+      --gold-4: #2a2016;
+
+      /* Paper */
+      --paper: #fbf7ef;
+      --paper-2: #f4efe5;
+
+      /* Text */
       --ink: rgba(47,62,92,.92);
-      --muted: rgba(47,62,92,.66);
-      --radius: 26px;
-      --shadow: 0 34px 90px rgba(0,0,0,.22);
+      --muted: rgba(47,62,92,.64);
+
+      --radius: 28px;
+      --shadow: 0 42px 110px rgba(0,0,0,.28);
+
+      /* Typography */
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      --display: "Bodoni Moda", Georgia, serif;
     }
 
     *{ box-sizing:border-box; }
@@ -31,15 +45,47 @@
 
     body{
       margin:0;
-      font-family: Inter, sans-serif;
+      font-family: var(--sans);
       color: var(--ink);
-      background:
-        radial-gradient(1200px 700px at 50% -10%, rgba(198,168,107,.10), transparent 55%),
-        radial-gradient(900px 600px at 15% 15%, rgba(255,255,255,.05), transparent 50%),
-        radial-gradient(900px 600px at 85% 85%, rgba(255,255,255,.04), transparent 55%),
-        repeating-linear-gradient(135deg, rgba(255,255,255,.018) 0px, rgba(255,255,255,.018) 2px, rgba(0,0,0,0) 6px, rgba(0,0,0,0) 12px),
-        linear-gradient(180deg, var(--navy-deep), #243149 70%, #1f2a40);
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      /* Deep nocturnal gold, no repeating patterns => no vertical lines */
+      background:
+        radial-gradient(1200px 800px at 50% -20%, rgba(255,230,170,.22), transparent 62%),
+        radial-gradient(900px 700px at 18% 25%, rgba(255,206,140,.14), transparent 62%),
+        radial-gradient(1100px 900px at 85% 80%, rgba(120,70,20,.22), transparent 68%),
+        linear-gradient(180deg, var(--gold-1) 0%, var(--gold-2) 38%, var(--gold-3) 72%, var(--gold-4) 100%);
+      background-attachment: fixed;
+    }
+
+    /* Ultra subtle “living light” animation */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      pointer-events:none;
+      background:
+        radial-gradient(900px 650px at 20% 15%, rgba(255,240,200,.10), transparent 60%),
+        radial-gradient(1000px 800px at 80% 75%, rgba(255,220,160,.06), transparent 65%);
+      opacity: .9;
+      animation: glow 22s ease-in-out infinite alternate;
+    }
+
+    /* Subtle grain */
+    body::after{
+      content:"";
+      position: fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.08;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    }
+
+    @keyframes glow{
+      0%   { transform: translate3d(0,0,0) scale(1); opacity: .85; }
+      100% { transform: translate3d(0,-10px,0) scale(1.02); opacity: .95; }
     }
 
     .wrap{
@@ -47,202 +93,277 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:72px 18px;
+      padding: 76px 18px;
+      position: relative;
+      z-index: 1;
     }
 
     .card{
-      width:min(860px,100%);
+      width: min(880px, 100%);
       text-align:center;
-      padding:74px 56px 56px;
-      border-radius:var(--radius);
+      padding: 78px 58px 56px;
+      border-radius: var(--radius);
       background:
-        radial-gradient(800px 420px at 50% 0%, rgba(198,168,107,.10), transparent 55%),
-        linear-gradient(180deg, var(--paper-2), var(--paper));
-      border:1px solid rgba(47,62,92,.10);
-      box-shadow:var(--shadow);
-      position:relative;
+        radial-gradient(900px 460px at 50% 0%, rgba(184,137,69,.10), transparent 60%),
+        linear-gradient(180deg, var(--paper), var(--paper-2));
+      border: 1px solid rgba(47,62,92,.10);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: calc(var(--radius) - 10px);
+      border: 1px solid rgba(47,62,92,.08);
+      pointer-events:none;
     }
 
     .logo{
-      width:min(520px,92%);
-      margin:0 auto 26px;
+      width: min(560px, 94%);
+      height:auto;
       display:block;
-      filter: drop-shadow(0 18px 38px rgba(0,0,0,.10));
+      margin: 0 auto 26px;
+      filter: drop-shadow(0 20px 44px rgba(0,0,0,.14));
     }
 
+    .handle{
+      margin: 6px 0 22px;
+      font-size: 12px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: rgba(47,62,92,.52);
+    }
+    .handle a{
+      color: inherit;
+      text-decoration:none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: .25s ease;
+    }
+    .handle a:hover{
+      color: rgba(47,62,92,.82);
+      border-color: rgba(47,62,92,.22);
+    }
+
+    /* Claim with Bodoni Moda (more maison) */
     h1{
-      font-family:"Cormorant Garamond", serif;
-      font-weight:500;
-      font-size:clamp(38px,4.4vw,56px);
-      margin:10px 0 14px;
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(40px, 4.8vw, 62px);
+      line-height: 1.03;
+      margin: 10px 0 14px;
+      letter-spacing: .005em;
+      color: rgba(47,62,92,.94);
     }
 
     .tagline{
-      font-family:"Cormorant Garamond", serif;
-      font-size:18px;
-      line-height:1.8;
-      color:var(--muted);
-      max-width:62ch;
-      margin:0 auto 30px;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 64ch;
+      margin: 0 auto 30px;
     }
 
     .divider{
-      width:120px;
-      height:1px;
-      background:linear-gradient(90deg, transparent, rgba(47,62,92,.22), transparent);
-      margin:22px auto 34px;
+      width: 130px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(47,62,92,.24), transparent);
+      margin: 22px auto 34px;
     }
 
     .kicker{
-      font-size:11px;
-      letter-spacing:.28em;
-      text-transform:uppercase;
-      color:rgba(47,62,92,.52);
-      margin-bottom:12px;
+      font-size: 11px;
+      letter-spacing: .30em;
+      text-transform: uppercase;
+      color: rgba(47,62,92,.52);
+      margin-bottom: 12px;
     }
 
     .copy{
-      font-size:15px;
-      line-height:1.95;
-      color:rgba(47,62,92,.70);
-      max-width:66ch;
-      margin:0 auto 34px;
+      font-size: 15px;
+      line-height: 2.0;
+      color: rgba(47,62,92,.70);
+      max-width: 66ch;
+      margin: 0 auto 34px;
     }
 
     .facts{
       display:flex;
-      gap:18px;
+      gap: 14px;
       justify-content:center;
       flex-wrap:wrap;
-      margin:12px auto 34px;
+      margin: 8px auto 34px;
+      max-width: 760px;
+    }
+    .fact{
+      padding: 10px 14px;
+      border: 1px solid rgba(47,62,92,.10);
+      border-radius: 999px;
+      background: rgba(255,255,255,.34);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(47,62,92,.64);
+      white-space: nowrap;
     }
 
-    .fact{
-      padding:10px 14px;
-      border:1px solid rgba(47,62,92,.10);
-      border-radius:999px;
-      background:rgba(255,255,255,.30);
-      font-size:12px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:rgba(47,62,92,.64);
-    }
+    .field{ width: min(470px, 100%); margin: 0 auto; }
 
     input[type="email"]{
-      width:min(460px,100%);
-      padding:14px 18px;
-      border-radius:999px;
-      border:1px solid rgba(47,62,92,.18);
-      background:rgba(255,255,255,.62);
-      font-size:14px;
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(47,62,92,.18);
+      background: rgba(255,255,255,.70);
+      color: rgba(47,62,92,.88);
+      font-size: 14px;
       outline:none;
-      margin-bottom:12px;
+      transition: .25s ease;
+    }
+    input[type="email"]::placeholder{ color: rgba(47,62,92,.46); }
+    input[type="email"]:focus{
+      border-color: rgba(47,62,92,.36);
+      background: rgba(255,255,255,.84);
     }
 
     .micro{
-      font-size:12px;
-      color:rgba(47,62,92,.50);
-      margin-bottom:18px;
+      margin-top: 10px;
+      font-size: 12px;
+      line-height: 1.7;
+      color: rgba(47,62,92,.50);
     }
 
     .actions{
+      margin-top: 18px;
       display:flex;
-      gap:12px;
       justify-content:center;
+      gap: 12px;
       flex-wrap:wrap;
     }
 
     .btn{
-      padding:12px 18px;
-      border-radius:999px;
-      border:1px solid rgba(47,62,92,.22);
-      background:transparent;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(47,62,92,.22);
+      background: transparent;
+      color: rgba(47,62,92,.86);
       text-decoration:none;
-      font-size:12px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:rgba(47,62,92,.86);
       cursor:pointer;
-      transition:.3s ease;
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      transition: transform .15s ease, background .25s ease, border-color .25s ease;
     }
-
-    .btn.primary{
-      border-color:rgba(198,168,107,.48);
-      background:rgba(198,168,107,.14);
-    }
-
     .btn:hover{
-      background:rgba(198,168,107,.18);
+      transform: translateY(-1px);
+      border-color: rgba(47,62,92,.34);
+      background: rgba(184,137,69,.14);
+    }
+    .btn.primary{
+      border-color: rgba(184,137,69,.52);
+      background: rgba(184,137,69,.18);
+    }
+    .btn.primary:hover{
+      background: rgba(184,137,69,.24);
+      border-color: rgba(184,137,69,.66);
     }
 
     footer{
-      margin-top:44px;
-      padding-top:18px;
-      border-top:1px solid rgba(47,62,92,.10);
-      font-size:12px;
-      color:rgba(47,62,92,.50);
+      margin-top: 46px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(47,62,92,.10);
+      color: rgba(47,62,92,.50);
+      font-size: 12px;
+      line-height: 1.8;
     }
 
-    @media(max-width:720px){
-      .card{ padding:54px 20px 44px; }
+    .fade{ opacity:0; transform: translateY(8px); animation: in .9s ease forwards; }
+    .d1{ animation-delay:.08s; }
+    .d2{ animation-delay:.16s; }
+    .d3{ animation-delay:.24s; }
+    .d4{ animation-delay:.32s; }
+    @keyframes in{ to{ opacity:1; transform: translateY(0); } }
+
+    @media (max-width: 720px){
+      .card{ padding: 54px 18px 44px; }
+      .logo{ width: min(460px, 96%); }
+      h1{ letter-spacing: 0; }
+      .fact{ font-size: 10px; letter-spacing: .14em; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      body::before{ animation: none; }
+      .fade{ animation: none; opacity:1; transform:none; }
     }
   </style>
 </head>
 
 <body>
-<main class="wrap">
-<article class="card">
+  <main class="wrap">
+    <article class="card">
 
-<img class="logo" src="hero.png" alt="Intemporel">
+      <img class="logo fade" src="hero.png" alt="Intemporel" />
 
-<h1>Permanent in a Temporary World.</h1>
+      <div class="handle fade d1">
+        <a href="https://instagram.com/theintemporel" target="_blank" rel="noopener noreferrer">@theintemporel</a>
+      </div>
 
-<p class="tagline">
-18K gold, made in France through a family jeweler’s atelier.
-Produced only on request, in extreme scarcity — never more than five exemplars of any design.
-</p>
+      <h1 class="fade d2">Permanent in a Temporary World.</h1>
 
-<div class="divider"></div>
+      <p class="tagline fade d2">
+        18K gold, made in France through a family jeweler’s atelier.
+        Produced only on request, in extreme scarcity — never more than five exemplars of any design.
+      </p>
 
-<div class="kicker">Manifesto</div>
-<p class="copy">
-Intemporel exists as a counterpoint to speed, disposability and noise.
-Jewelry should feel like a companion — warm, discreet, intimate — a personal anchor that endures.
-</p>
+      <div class="divider fade d2"></div>
 
-<div class="facts">
-  <div class="fact">18K gold only</div>
-  <div class="fact">Made to order</div>
-  <div class="fact">Max 5 exemplars</div>
-  <div class="fact">Minimum 1 month</div>
-</div>
+      <div class="kicker fade d3">Manifesto</div>
+      <p class="copy fade d3">
+        Intemporel exists as a counterpoint to speed, disposability and noise.
+        Jewelry should feel like a companion — warm, discreet, intimate — a personal anchor that endures.
+      </p>
 
-<div class="kicker">Request access</div>
+      <div class="facts fade d3" aria-label="Key facts">
+        <div class="fact">18K gold only</div>
+        <div class="fact">Made to order</div>
+        <div class="fact">Max 5 exemplars</div>
+        <div class="fact">Minimum 1 month</div>
+      </div>
 
-<form action="https://formspree.io/f/xwvnbwbr" method="POST">
-  <input type="email" name="email" placeholder="Your email address" required>
-  <input type="hidden" name="_subject" value="Intemporel — Request access">
-  <input type="text" name="_gotcha" style="display:none">
-  <div class="micro">
-    We reply personally. No stock. Made only after confirmation.
-  </div>
+      <div class="kicker fade d4">Request access</div>
 
-  <div class="actions">
-    <button class="btn primary" type="submit">Join waiting list</button>
-    <a class="btn" href="https://wa.me/33749889083" target="_blank">WhatsApp</a>
-  </div>
-</form>
+      <form class="fade d4" action="https://formspree.io/f/xwvnbwbr" method="POST">
+        <div class="field">
+          <input type="email" name="email" placeholder="Your email address" autocomplete="email" required />
+          <input type="hidden" name="_subject" value="Intemporel — Request access" />
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+          <div class="micro">We reply personally. No stock. Made only after confirmation.</div>
+        </div>
 
-<footer>
-© <span id="year"></span> Intemporel — Produced in extreme scarcity.
-</footer>
+        <div class="actions">
+          <button class="btn primary" type="submit">Join waiting list</button>
+          <a class="btn" href="https://wa.me/33749889083" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </form>
 
-</article>
-</main>
+      <footer class="fade d4">
+        <div>Intemporel — produced in extreme scarcity.</div>
+        <div style="margin-top:10px; opacity:.52;">© <span id="y"></span> Intemporel</div>
+      </footer>
 
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+    </article>
+  </main>
 
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
