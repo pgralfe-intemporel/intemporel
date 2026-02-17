@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Intemporel — Permanent in a Temporary World</title>
 
+<!-- FAVICON -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="icon" href="favicon.ico">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -14,7 +21,6 @@
 :root{
   --navy:#2F3E5C;
 
-  /* Light champagne gold */
   --gold-1:#f2e6d2;
   --gold-2:#ead9bd;
   --gold-3:#dfc7a3;
@@ -41,31 +47,12 @@ body{
   font-family:var(--serif);
   color:var(--ink);
 
-  /* Light, continuous gold background */
   background:
     radial-gradient(1200px 700px at 50% -10%, rgba(255,255,255,.55), transparent 60%),
     linear-gradient(180deg, var(--gold-1), var(--gold-2) 60%, var(--gold-3));
 
   background-attachment: fixed;
   -webkit-font-smoothing:antialiased;
-}
-
-/* Subtle soft movement */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-    radial-gradient(800px 600px at 20% 20%, rgba(255,255,255,.35), transparent 70%),
-    radial-gradient(900px 700px at 80% 80%, rgba(255,255,255,.25), transparent 70%);
-  animation: drift 20s ease-in-out infinite alternate;
-  opacity:.6;
-}
-
-@keyframes drift{
-  0%{transform:translateY(0);}
-  100%{transform:translateY(-20px);}
 }
 
 .wrap{
@@ -128,8 +115,6 @@ h1{
   background:linear-gradient(90deg, transparent, rgba(47,62,92,.25), transparent);
   margin:30px auto 40px;
 }
-
-/* SAME TYPOGRAPHY BELOW */
 
 .kicker{
   font-family:var(--sans);
