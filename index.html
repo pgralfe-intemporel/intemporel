@@ -1,343 +1,197 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Intemporel — Permanent in a Temporary World. 18K gold, made in France, produced only on request in extreme scarcity." />
-  <title>Intemporel — Permanent in a Temporary World</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <!-- Preconnect for fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Intemporel — Permanent in a Temporary World</title>
 
-  <!-- Fonts: warm editorial serif + clean sans -->
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <style>
-    :root{
-      /* Palette: calm ivory + ink + muted gold */
-      --bg: #faf7f2;
-      --ink: #1c1b1a;
-      --muted: rgba(28,27,26,.62);
-      --hair: rgba(28,27,26,.14);
-      --gold: #b08a52;
-      --shadow: 0 18px 48px rgba(28,27,26,.06);
-      --radius: 22px;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-    *{ box-sizing: border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      background: radial-gradient(1200px 700px at 50% 0%, rgba(176,138,82,.06), transparent 55%),
-                  var(--bg);
-      color: var(--ink);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      letter-spacing: .01em;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+<style>
+:root{
+  --navy:#2F3E5C;
+  --navy-deep:#283652;
+  --ivory:#F6F3EE;
+  --gold:#C6A86B;
+  --muted:rgba(47,62,92,.65);
+  --radius:28px;
+}
 
-    /* Centered layout */
-    .wrap{
-      min-height: 100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 64px 18px;
-    }
+body{
+  margin:0;
+  font-family:Inter, sans-serif;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,255,255,.04), transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(255,255,255,.03), transparent 40%),
+    var(--navy-deep);
+  color:var(--navy);
+  -webkit-font-smoothing:antialiased;
+}
 
-    .card{
-      width: min(780px, 100%);
-      text-align:center;
-      padding: 56px 28px 44px;
-      border: 1px solid rgba(28,27,26,.10);
-      border-radius: var(--radius);
-      background: rgba(250,247,242,.72);
-      backdrop-filter: blur(8px);
-      box-shadow: var(--shadow);
-    }
+.wrap{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:60px 20px;
+}
 
-    /* Brand seal */
-    .hero{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap: 16px;
-      margin-bottom: 18px;
-    }
+.card{
+  width:min(820px,100%);
+  background:var(--ivory);
+  border-radius:var(--radius);
+  padding:70px 50px 60px;
+  text-align:center;
+  box-shadow:0 30px 60px rgba(0,0,0,.15);
+}
 
-    .logo{
-      width: 170px;
-      height: auto;
-      display:block;
-      filter: drop-shadow(0 10px 28px rgba(28,27,26,.10));
-      opacity: .98;
-    }
+.logo{
+  width:380px;
+  max-width:90%;
+  margin-bottom:30px;
+}
 
-    /* Subtle “signature” line */
-    .handle{
-      margin: 8px 0 26px;
-      font-size: 13px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
+h1{
+  font-family:"Cormorant Garamond", serif;
+  font-weight:500;
+  font-size:clamp(34px,4vw,48px);
+  margin:0 0 20px;
+  color:var(--navy);
+}
 
-    .handle a{
-      color: var(--muted);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 2px;
-      transition: border-color .25s ease, color .25s ease;
-    }
-    .handle a:hover{
-      color: var(--ink);
-      border-color: rgba(28,27,26,.22);
-    }
+.tagline{
+  font-family:"Cormorant Garamond", serif;
+  font-size:18px;
+  line-height:1.7;
+  max-width:600px;
+  margin:0 auto 40px;
+  color:var(--muted);
+}
 
-    /* Typography */
-    h1{
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(26px, 3.2vw, 40px);
-      line-height: 1.25;
-      margin: 10px 0 10px;
-    }
+.section-title{
+  text-transform:uppercase;
+  letter-spacing:.25em;
+  font-size:12px;
+  margin-bottom:15px;
+  color:var(--muted);
+}
 
-    .tagline{
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--muted);
-      max-width: 56ch;
-      margin: 0 auto 26px;
-    }
+.copy{
+  font-size:16px;
+  line-height:1.9;
+  color:var(--muted);
+  margin-bottom:40px;
+}
 
-    .divider{
-      width: 110px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(28,27,26,.22), transparent);
-      margin: 22px auto 26px;
-    }
+/* Form */
+input[type="email"]{
+  width:100%;
+  max-width:420px;
+  padding:14px 18px;
+  border-radius:999px;
+  border:1px solid rgba(47,62,92,.2);
+  font-size:14px;
+  outline:none;
+  margin-bottom:18px;
+  transition:all .3s ease;
+}
 
-    /* Sections */
-    .section{
-      text-align:center;
-      margin: 0 auto 22px;
-      max-width: 62ch;
-    }
+input[type="email"]:focus{
+  border-color:var(--navy);
+}
 
-    .kicker{
-      font-size: 12px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(28,27,26,.58);
-      margin-bottom: 10px;
-    }
+button, .whatsapp-btn{
+  display:inline-block;
+  padding:14px 28px;
+  border-radius:999px;
+  border:1px solid var(--navy);
+  background:transparent;
+  color:var(--navy);
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  font-size:12px;
+  cursor:pointer;
+  transition:.3s ease;
+  text-decoration:none;
+}
 
-    .copy{
-      font-size: 15px;
-      line-height: 1.85;
-      color: rgba(28,27,26,.74);
-      margin: 0;
-    }
+button:hover,
+.whatsapp-btn:hover{
+  background:var(--navy);
+  color:white;
+}
 
-    /* Three pillars */
-    .pillars{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin: 22px auto 10px;
-      width: min(680px, 100%);
-    }
+.actions{
+  margin-top:20px;
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
 
-    .pillar{
-      border: 1px solid rgba(28,27,26,.10);
-      border-radius: 18px;
-      padding: 16px 14px;
-      background: rgba(255,255,255,.28);
-    }
+footer{
+  margin-top:60px;
+  font-size:12px;
+  color:rgba(47,62,92,.5);
+}
 
-    .pillar strong{
-      display:block;
-      font-size: 12px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: rgba(28,27,26,.70);
-      margin-bottom: 6px;
-    }
-
-    .pillar span{
-      font-size: 13px;
-      line-height: 1.6;
-      color: rgba(28,27,26,.62);
-    }
-
-    /* CTA */
-    .cta{
-      margin-top: 26px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 12px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(28,27,26,.18);
-      text-decoration:none;
-      color: var(--ink);
-      font-size: 13px;
-      letter-spacing: .10em;
-      text-transform: uppercase;
-      background: transparent;
-      transition: transform .15s ease, background .25s ease, border-color .25s ease;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(28,27,26,.28);
-      background: rgba(176,138,82,.06);
-    }
-
-    .btn.primary{
-      border-color: rgba(176,138,82,.42);
-      background: rgba(176,138,82,.10);
-    }
-    .btn.primary:hover{
-      background: rgba(176,138,82,.16);
-      border-color: rgba(176,138,82,.55);
-    }
-
-    /* Footer */
-    footer{
-      margin-top: 30px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(28,27,26,.10);
-      color: rgba(28,27,26,.48);
-      font-size: 12px;
-      line-height: 1.8;
-    }
-
-    footer a{
-      color: rgba(28,27,26,.58);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 2px;
-    }
-    footer a:hover{
-      color: var(--ink);
-      border-color: rgba(28,27,26,.18);
-    }
-
-    /* Responsive */
-    @media (max-width: 720px){
-      .card{ padding: 44px 18px 34px; }
-      .logo{ width: 150px; }
-      .pillars{ grid-template-columns: 1fr; }
-    }
-
-    /* Subtle fade-in */
-    .fade{
-      opacity:0;
-      transform: translateY(8px);
-      animation: in .9s ease forwards;
-    }
-    .fade.delay1{ animation-delay: .08s; }
-    .fade.delay2{ animation-delay: .16s; }
-    .fade.delay3{ animation-delay: .24s; }
-
-    @keyframes in{
-      to{ opacity:1; transform: translateY(0); }
-    }
-  </style>
+@media(max-width:768px){
+  .card{ padding:50px 25px; }
+  .logo{ width:280px; }
+}
+</style>
 </head>
 
 <body>
-  <main class="wrap">
-    <article class="card">
-      <div class="hero fade">
-        <!-- Your file: hero.png (same folder as index.html) -->
-        <img class="logo" src="hero.png" alt="Intemporel" />
-      </div>
 
-      <div class="handle fade delay1">
-        <a href="https://instagram.com/theintemporel" target="_blank" rel="noopener noreferrer">@theintemporel</a>
-      </div>
+<main class="wrap">
+<article class="card">
 
-      <h1 class="fade delay2">Permanent in a Temporary World.</h1>
-      <p class="tagline fade delay2">
-        18K gold pieces, made in France through a family jeweler’s atelier.
-        Produced only on request, in extreme scarcity — never more than five exemplars of any design.
-      </p>
+<img src="hero.png" class="logo" alt="Intemporel">
 
-      <div class="divider fade delay2"></div>
+<h1>Permanent in a Temporary World.</h1>
 
-      <section class="section fade delay3">
-        <div class="kicker">Manifesto</div>
-        <p class="copy">
-          Intemporel exists as a counterpoint to speed, disposability, and noise.
-          Jewelry should feel like a companion — warm, discreet, intimate — a personal anchor that endures.
-        </p>
-      </section>
+<p class="tagline">
+18K gold pieces, made in France through a family jeweler’s atelier.
+Produced only on request, in extreme scarcity — never more than five exemplars of any design.
+</p>
 
-      <div class="pillars fade delay3" aria-label="Brand pillars">
-        <div class="pillar">
-          <strong>18K Gold</strong>
-          <span>Only solid 18K gold — designed to last, worn close to the skin.</span>
-        </div>
-        <div class="pillar">
-          <strong>Made to Order</strong>
-          <span>No stock. A minimum one-month lead time before production begins.</span>
-        </div>
-        <div class="pillar">
-          <strong>Extreme Scarcity</strong>
-          <span>Never more than five exemplars of any piece. Ever.</span>
-        </div>
-      </div>
+<div class="section-title">Manifesto</div>
+<p class="copy">
+Intemporel exists as a counterpoint to speed, disposability and noise.
+Jewelry should feel like a companion — warm, discreet, intimate — a personal anchor that endures.
+</p>
 
-      <section class="section fade delay3" style="margin-top: 18px;">
-        <div class="kicker">How it works</div>
-        <p class="copy">
-          Request access → personal confirmation → production in France → delivery.
-          Made-to-measure is possible within the Intemporel design language.
-        </p>
-      </section>
+<div class="section-title">Request Access</div>
 
-      <div class="cta fade delay3">
-        <!-- Mailto request: edit the email address -->
-        <a class="btn primary" href="mailto:contact@intemporel.store?subject=Request%20Access%20%E2%80%94%20Intemporel&body=Hello%20Intemporel%2C%0A%0AI%E2%80%99d%20like%20to%20request%20access%20to%20the%20waiting%20list.%0A%0AName%3A%0ACity%2FCountry%3A%0AInterest%20(piece%20or%20custom)%3A%0APreferred%20size%20(if%20relevant)%3A%0A%0AThank%20you%2C">
-          Request Access
-        </a>
-        <a class="btn" href="https://instagram.com/theintemporel" target="_blank" rel="noopener noreferrer">
-          Instagram
-        </a>
-      </div>
+<form action="https://formspree.io/f/TU_ID" method="POST">
+  <input type="email" name="email" placeholder="Your email address" required>
+  <div class="actions">
+    <button type="submit">Join the Waiting List</button>
 
-      <footer class="fade delay3">
-        <div>
-          Intemporel is produced in limited series. We reply personally.
-        </div>
-        <div>
-          <a href="mailto:contact@intemporel.store">contact@intemporel.store</a>
-          <span style="opacity:.45;"> · </span>
-          <a href="https://instagram.com/theintemporel" target="_blank" rel="noopener noreferrer">Instagram</a>
-        </div>
-        <div style="margin-top:10px; opacity:.52;">
-          © <span id="y"></span> Intemporel
-        </div>
-      </footer>
-    </article>
-  </main>
+    <!-- WhatsApp Direct -->
+    <a class="whatsapp-btn"
+       href="https://wa.me/33749889083"
+       target="_blank">
+       WhatsApp
+    </a>
+  </div>
+</form>
 
-  <script>
-    // Current year
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+<footer>
+© <span id="year"></span> Intemporel — Produced in extreme scarcity.
+</footer>
+
+</article>
+</main>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
